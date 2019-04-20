@@ -1,9 +1,9 @@
 pipeline {
   environment {
-    registry = "ws_kubernetes_mirror/jenkins-ws-slave"
-    registryCredential = 'uhub'
+    registry = "ravirekha1/jenkins-slave"
+    registryCredential = 'dockerhub'
     dockerImage = ''
-  }
+  }/
   agent any
   stages {
     stage('Cloning Git') {
@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( "uhub.service.ucloud.cn",'uhub') {
+          docker.withRegistry( '','docker-hub') {
             dockerImage.push()
           }
         }
